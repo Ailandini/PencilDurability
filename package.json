@@ -1,0 +1,29 @@
+{
+  "name": "pencil-durbability",
+  "version": "1.0.0",
+  "description": "Pillar Kata for designing a fully functioning pencil",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ailandini/PencilDurability.git"
+  },
+  "keywords": [
+    "pencil",
+    "kata",
+    "javascript"
+  ],
+  "author": "Ansel Landini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ailandini/PencilDurability/issues"
+  },
+  "homepage": "https://github.com/Ailandini/PencilDurability#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.0.0",
+    "webpack": "^4.41.5"
+  }
+}

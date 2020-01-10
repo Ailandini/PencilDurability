@@ -1,0 +1,51 @@
+Thinking two modules needed for the pencil/it's actions and the paper with convenience functions. 
+
+First define paper:
+PAPER 
+    Properties:
+        pageBody
+    Functions:
+        clear
+        getText
+        addText
+        eraseText
+        editText
+        CLEAR 
+            PAPER removes all existing text
+        getText
+            PAPER returns currently written characters
+        addText 
+            PAPER appends provided text to currently written text 
+        eraseText 
+            PAPER removes right most occurence of provided text if it exists
+        editText
+            PAPER replaces overlaps with @ and maintains characters that would fit into spaces
+            PAPER replaces overwrites left most erased space.
+
+Second define pencil:
+PENCIL 
+    Properties:
+        Point Durability
+        Length
+        Eraser Durability
+    Functions:
+        WRITE 
+            tells PAPER what to add. 
+            PAPER adds text
+            PENCIL decrements Point Durability (except spaces and new lines)
+        ERASE 
+            tell PAPER what to erase 
+            PAPER erases last instance (if it exists)
+            PENCIL Eraser Durability decrements 
+        SHARPEN 
+            PENCIL reduces Length by 1
+            PENCIL regains initial Point Durability
+        EDIT 
+            PENCIL tells PAPER what to put into edit 
+            PAPER converts would be overlaps to @ (maintaining the original character for existing spaces)
+            PAPER overwrites edit in left most erased area (if it exists)
+            PENCIL decrements Point Durability (except spaces and new lines)
+
+Potential difficulties:
+    The edit text portion of this code, namely maintaining the overwriting text where spaces currently exist 
+    will be the most challenging aspect of this code.
