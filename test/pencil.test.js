@@ -41,23 +41,19 @@ describe('tests for Pencil module', function () {
                 pencil_one.write("He ww HH d r");
                 assert.equal(pencil_one.getPointDurability(), 1);
             });
-            it('check that point durability never drops below 0', function(){
+            it('check that point durability never drops below 0', function () {
                 pencil_one.write("Hello World Everyone!");
                 assert.equal(pencil_one.getPointDurability(), 0);
             });
         });
     });
-    describe('sharpen tests', function(){
+    describe('sharpen tests', function () {
         var pencil_one = new Pencil(12);
-        var pencil_two = new Pencil(24);
-        it('calling sharpen() on a pencil returns its point durability to the original value', function(){
-            pencil_one.write("Hello World");
-            pencil_one.sharpen();
+        pencil_one.write("Hello World");
+        pencil_one.sharpen();
+        
+        it('calling sharpen() on a pencil returns its point durability to the original value', function () {
             assert.equal(pencil_one.getPointDurability(), 12);
-
-            pencil_two.write("Hello World");
-            pencil_two.sharpen();
-            assert.equal(pencil_two.getPointDurability(), 24);
         });
     });
 
