@@ -8,9 +8,14 @@ class Pencil {
     }
 
     write(text_to_write) {
-        //Would be own private function
         const amount_to_reduce_length = calculatePointDurabilityReduction(text_to_write);
-        this.point_durability = (this.point_durability - amount_to_reduce_length);
+        var new_point_durability = (this.point_durability - amount_to_reduce_length);
+
+        if(new_point_durability < 0) {
+            new_point_durability = 0;
+        }
+        
+        this.point_durability = new_point_durability;
     }
 }
 

@@ -41,6 +41,10 @@ describe('tests for Pencil module', function () {
                 pencil_one.write("He ww HH d r");
                 assert.equal(pencil_one.getPointDurability(), 1);
             });
+            it('check that point durability never drops below 0', function(){
+                pencil_one.write("Hello World Everyone!");
+                assert.equal(pencil_one.getPointDurability(), 0);
+            });
         });
     });
 
