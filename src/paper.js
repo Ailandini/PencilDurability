@@ -1,6 +1,6 @@
-const newPage = function(){
-    return new Paper();
-}
+// const newPage = function(){
+//     return new Paper();
+// }
 
 class Paper {
     constructor() {
@@ -13,6 +13,5 @@ class Paper {
 }
 
 module.exports = {
-    newPage,
     Paper
 }
