@@ -1,6 +1,6 @@
 class Pencil {
     constructor(input_point_durability) {
-        this.point_durability = input_point_durability;
+        this.point_durability = this.original_point_durability = input_point_durability;
     }
 
     getPointDurability() {
@@ -19,7 +19,7 @@ class Pencil {
     }
 
     sharpen() {
-        this.point_durability = 12;
+        this.point_durability = this.original_point_durability;
     }
 }
 
