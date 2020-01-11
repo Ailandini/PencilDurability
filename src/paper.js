@@ -3,7 +3,13 @@ const newPage = function(){
 }
 
 class Paper {
+    constructor() {
+        this.text = '';
+    }
 
+    getText() {
+        return this.text;
+    }
 }
 
 module.exports = {

@@ -9,4 +9,8 @@ describe('tests for paper module', function(){
         var sheet_one = PAPER.newPage();
         assert(sheet_one instanceof PAPER.Paper);
     });
+    it("Calling Paper's method 'getText' returns a string", function() {
+        var sheet_one = PAPER.newPage();
+        expect(sheet_one.getText()).to.be.a('string');
+    });
 });
