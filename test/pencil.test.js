@@ -48,12 +48,15 @@ describe('tests for Pencil module', function () {
         });
     });
     describe('sharpen tests', function () {
-        var pencil_one = new Pencil(12);
+        var pencil_one = new Pencil(12, 1);
         pencil_one.write("Hello World");
         pencil_one.sharpen();
         
         it('calling sharpen() on a pencil returns its point durability to the original value', function () {
             assert.equal(pencil_one.getPointDurability(), 12);
+        });
+        it('calling getLength() on pencil returns pencil length', function(){
+            assert.equal(pencil_one.getLength(), 1);
         });
     });
 
