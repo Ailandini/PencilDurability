@@ -1,6 +1,6 @@
 class Pencil {
-    constructor(point_durability) {
-        this.point_durability = point_durability;
+    constructor(input_point_durability) {
+        this.point_durability = input_point_durability;
     }
 
     getPointDurability() {
@@ -8,7 +8,10 @@ class Pencil {
     }
 
     write(text_to_write) {
-        return;
+        if(text_to_write.length == 0){
+            return;
+        }
+        return this.point_durability--;
     }
 }
 

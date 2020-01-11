@@ -8,6 +8,10 @@ describe('tests for PENCIL module', function () {
     });
     it('writing with "" with the pencil does not decrease pencil durability', function(){
         pencil_one.write("");
-        assert(pencil_one.getPointDurability(), '12');
+        assert.equal(pencil_one.getPointDurability(), '12');
     });
+    it('writing "h" reduced pencil durability by 1', function(){
+        pencil_one.write("h");
+        assert.equal(pencil_one.getPointDurability(), '11');
+    })
 });
