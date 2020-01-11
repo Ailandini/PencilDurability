@@ -35,4 +35,8 @@ describe('tests for Pencil module', function () {
         pencil_one.write("HeLlO");
         assert.equal(pencil_one.getPointDurability(), 4);
     });
+    it('check that write still calculates correctly when spaces are in the middle of text', function(){
+        pencil_one.write("He ww HH d r");
+        assert.equal(pencil_one.getPointDurability(), 1);
+    })
 });
