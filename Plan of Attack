@@ -14,13 +14,14 @@ PAPER
             PAPER removes all existing text
         getText
             PAPER returns currently written characters
-        addText 
-            PAPER appends provided text to currently written text 
-        eraseText 
-            PAPER removes right most occurence of provided text if it exists
-        editText
+        addText (requires a pencil be provided as a parameter)
+            PAPER appends provided text to currently written text.
+        eraseText (requires a pencil be provided as a parameter)
+            PAPER removes right most occurence of provided text if it exists.
+        editText (requires a pencil be provided as a parameter)
             PAPER replaces overlaps with @ and maintains characters that would fit into spaces
             PAPER replaces overwrites left most erased space.
+            
 
 Second define pencil:
 PENCIL 
