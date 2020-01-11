@@ -1,8 +1,12 @@
 import {expect, assert} from 'chai';
-const Paper = require('../src/paper');
+const PAPER = require('../src/paper');
 
 describe('tests for paper module', function(){
     it('Paper.newPage() creates an empty instance of a piece of paper', function(){
-        expect(Paper.newPage()).to.not.be.a('null');
+        expect(PAPER.newPage()).to.not.be.a('null');
+    });
+    it('Assigning Paper.newPage() assigns an object of type Paper', function(){
+        var sheet_one = PAPER.newPage();
+        assert(sheet_one instanceof PAPER.Paper);
     });
 });
