@@ -8,10 +8,7 @@ class Pencil {
     }
 
     write(text_to_write) {
-        if(text_to_write.length == 0){
-            return;
-        }
-        return this.point_durability--;
+        this.point_durability = this.point_durability - text_to_write.length;
     }
 }
 
