@@ -4,7 +4,8 @@
   "description": "Pillar Kata for designing a fully functioning pencil",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "build": "webpack",
+    "test": "mocha --require esm"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,9 @@
   "homepage": "https://github.com/Ailandini/PencilDurability#readme",
   "devDependencies": {
     "chai": "^4.2.0",
+    "esm": "^3.2.25",
     "mocha": "^7.0.0",
-    "webpack": "^4.41.5"
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   }
 }
