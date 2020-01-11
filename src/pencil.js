@@ -17,6 +17,10 @@ class Pencil {
         
         this.point_durability = new_point_durability;
     }
+
+    sharpen() {
+        this.point_durability = 12;
+    }
 }
 
 function calculatePointDurabilityReduction(text_to_write) {
