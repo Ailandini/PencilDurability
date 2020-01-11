@@ -68,6 +68,13 @@ describe('tests for Pencil module', function () {
             it('calling sharpen() reducees pencil length by 1', function () {
                 assert.equal(pencil_one.getLength(), 0);
             });
+            it('sharpening when length is 0 does not decrease length or return point durability', function(){
+                var current_point_durability = pencil_one.getPointDurability();
+                pencil_one.sharpen();
+                assert.equal(pencil_one.getPointDurability(), current_point_durability);
+                assert.equal(pencil_one.getLength(), 0);
+                
+            });
         });
     });
 

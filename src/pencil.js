@@ -24,6 +24,9 @@ class Pencil {
     }
 
     sharpen() {
+        if(this.pencil_length == 0){
+            return;
+        }
         this.point_durability = this.original_point_durability;
         this.pencil_length--;
     }
