@@ -27,4 +27,8 @@ describe('tests for Pencil module', function () {
         pencil_one.write(" hello ");
         assert.equal(pencil_one.getPointDurability(), 7);
     });
+    it('writing "HELLO" reduces pencil durability by 2x "hello"', function(){
+        pencil_one.write("HELLO");
+        assert.equal(pencil_one.getPointDurability(), 2);
+    });
 });
