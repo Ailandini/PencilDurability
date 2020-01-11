@@ -10,6 +10,10 @@ class Paper {
     getText() {
         return this.text;
     }
+
+    addText(text_to_add) {
+        this.text = text_to_add;
+    }
 }
 
 module.exports = {
