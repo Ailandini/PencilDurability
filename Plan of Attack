@@ -33,7 +33,7 @@ PENCIL
         WRITE 
             tells PAPER what to add. 
             PAPER adds text
-            PENCIL decrements Point Durability (except spaces and new lines)
+            PENCIL decrements Point Durability (except spaces and new lines, 2x for uppers);
         ERASE 
             tell PAPER what to erase 
             PAPER erases last instance (if it exists)
