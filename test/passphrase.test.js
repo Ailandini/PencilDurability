@@ -6,7 +6,10 @@ describe('tests for passphrase class', function () {
     it('passphrase variable is an instance of Passphrase', function(){
         assert(passphrase instanceof Passphrase);
     });
+    it('other objects are not instances of passphrase', function(){
+        assert(!('' instanceof Passphrase));
+    });
     it('passphrase.phrase returns the arbitrary passphrase', function(){
-        expect(passphrase.phrase).to.be.a('string')
+        expect(passphrase.phrase).to.be.a('string');
     });
 });

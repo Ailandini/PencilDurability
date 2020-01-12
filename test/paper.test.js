@@ -17,10 +17,17 @@ describe('tests for Paper module', function () {
     });
     describe('Paper methods that require a Pencil Passphrase', function () {
         var passphrase = new Passphrase();
+        beforeEach(function(){
+            sheet_one = new Paper();
+        });
         describe('tests for addText', function () {
             it('addText adds the given text to the sheet, and getText returns updated value', function () {
                 sheet_one.addText('Hello', passphrase);
                 assert.equal(sheet_one.getText(), 'Hello');
+            });
+            it('addText without a non-passphrase object returns empty', function() {
+                sheet_one.addText('Hello', '');
+                assert.equal(sheet_one.getText(), '');
             });
         });
     });

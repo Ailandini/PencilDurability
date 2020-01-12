@@ -10,7 +10,7 @@ class Paper {
     }
 
     addText(text_to_add, passphrase) {
-        if(passphrase == undefined) {
+        if(!(passphrase instanceof Passphrase)) {
             return;
         }
         this.text = text_to_add;
