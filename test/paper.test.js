@@ -33,6 +33,11 @@ describe('tests for Paper module', function () {
                 sheet_one.addText('Hello');
                 assert.equal(sheet_one.getText(), '');
             });
+            it('if there is already text on the paper, addText appends the new text to the current text', function() {
+                sheet_one.addText('Hello', passphrase);
+                sheet_one.addText(' World!', passphrase);
+                assert.equal(sheet_one.getText(), 'Hello World!');
+            });
         });
     });
 });

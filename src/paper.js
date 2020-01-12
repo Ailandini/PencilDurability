@@ -13,7 +13,7 @@ class Paper {
         if(!(passphrase instanceof Passphrase)) {
             return;
         }
-        this.text = text_to_add;
+        this.text += text_to_add;
     }
 }
 
