@@ -97,15 +97,18 @@ describe('tests for Pencil module', function () {
             pencil_one.write('Hello', sheet_one);
             assert.equal(sheet_one.getText(), 'Hello');
         });
-        it('pencil stops writing when PD becomes 0', function(){
+        it('pencil stops writing when PD becomes 0 and text has trailing spaces', function(){
             pencil_one.write('Hello World!', sheet_one);
             assert.equal(sheet_one.getText(), 'Hello ')
         });
-        it('pencil writing stops correctly when text has innerspaces', function() {
+        it('pencil writing stops correctly when PD becomes 0 and text has innerspaces', function() {
             pencil_one.write('H     World!', sheet_one);
             assert.equal(sheet_one.getText(), 'H     Wor');
         });
-        
+        it('pencil writing stops correctly when PD becomes 0 and text has leading spaces', function() {
+            pencil_one.write('   H     World!', sheet_one);
+            assert.equal(sheet_one.getText(), '   H     Wor');
+        });
     });
 });
 
