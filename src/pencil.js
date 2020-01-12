@@ -26,7 +26,23 @@ class Pencil {
         var number_of_characters_to_write = text_to_write.length;
         if(new_point_durability < 0) {
             new_point_durability = 0;
-            number_of_characters_to_write = this.point_durability;
+            number_of_characters_to_write = 0;
+            var text_to_write_index = 0;
+            var text_cost = this.point_durability;
+            while((text_cost > 0 && text_to_write.length > text_to_write_index) || text_to_write[text_to_write_index] == " ") {
+                var text_to_write_char = text_to_write[text_to_write_index]
+                if(text_to_write_char == " ") {
+
+                }
+                else if(text_to_write_char.toUpperCase() == text_to_write_char){
+                    text_cost -= 2;
+                }
+                else {
+                    text_cost--;
+                }
+                number_of_characters_to_write++;
+                text_to_write_index++;
+            }
         }
 
 

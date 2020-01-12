@@ -101,6 +101,11 @@ describe('tests for Pencil module', function () {
             pencil_one.write('Hello World!', sheet_one);
             assert.equal(sheet_one.getText(), 'Hello ')
         });
+        it('pencil writing stops correctly when text has innerspaces', function() {
+            pencil_one.write('H     World!', sheet_one);
+            assert.equal(sheet_one.getText(), 'H     Wor');
+        });
+        
     });
 });
 
