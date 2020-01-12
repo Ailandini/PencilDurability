@@ -1,8 +1,11 @@
+import { Passphrase } from './passphrase'
+
 class Pencil {
     constructor(input_point_durability, input_pencil_length, input_eraser_durability) {
         this.point_durability = this.original_point_durability = input_point_durability;
         this.pencil_length = input_pencil_length;
         this.eraser_durability = input_eraser_durability;
+        this.passphrase = new Passphrase;
     }
 
     getPointDurability() {
@@ -17,7 +20,7 @@ class Pencil {
         return this.eraser_durability;
     }
 
-    write(text_to_write) {
+    write(text_to_write, paper_to_write_on) {
         const amount_to_reduce_length = calculatePointDurabilityReduction(text_to_write);
         var new_point_durability = (this.point_durability - amount_to_reduce_length);
 
@@ -26,6 +29,8 @@ class Pencil {
         }
         
         this.point_durability = new_point_durability;
+
+        paper_to_write_on.addText(text_to_write, this.passphrase);
     }
 
     sharpen() {
@@ -44,6 +49,6 @@ function calculatePointDurabilityReduction(text_to_write) {
     return no_space_text_length + number_of_caps;
 }
 
-module.exports = {
+export {
     Pencil
 }
