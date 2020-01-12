@@ -29,6 +29,10 @@ describe('tests for Paper module', function () {
                 sheet_one.addText('Hello', '');
                 assert.equal(sheet_one.getText(), '');
             });
+            it('addText without a second parameter returns empty', function(){
+                sheet_one.addText('Hello');
+                assert.equal(sheet_one.getText(), '');
+            });
         });
     });
 });
