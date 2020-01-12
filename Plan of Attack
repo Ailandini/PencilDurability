@@ -46,7 +46,13 @@ PENCIL
             PAPER converts would be overlaps to @ (maintaining the original character for existing spaces)
             PAPER overwrites edit in left most erased area (if it exists)
             PENCIL decrements Point Durability (except spaces and new lines)
-
+PASSPHRASE
+    None user facing class required to call Paper methods.
+    The reason for this is that javascript does not support private methods.
+    Since Paper should be responsible for adding text to itself, but text shouldn't be edited on the paper without
+    updating the state of the Pencil, we need a way to prevent the user from calling Paper change methods for free.
+    The PASSPHRASE class is the way to do this, as it will not be available to the user. Pencil can create a passphrase 
+    associated to that pencil, then pass it to paper to verify that the call is from a pencil not a user.
 Potential difficulties:
     The edit text portion of this code, namely maintaining the overwriting text where spaces currently exist 
     will be the most challenging aspect of this code.
