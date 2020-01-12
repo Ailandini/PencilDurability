@@ -23,33 +23,13 @@ class Pencil {
     write(text_to_write, paper_to_write_on) {
         const amount_to_reduce_length = calculatePointDurabilityReduction(text_to_write);
         var new_point_durability = (this.point_durability - amount_to_reduce_length);
-        var number_of_characters_to_write = text_to_write.length;
+        var text_that_can_be_written = text_to_write;
         if(new_point_durability < 0) {
             new_point_durability = 0;
-            number_of_characters_to_write = 0;
-            var text_to_write_index = 0;
-            var text_cost = this.point_durability;
-            while((text_cost > 0 && text_to_write.length > text_to_write_index) || text_to_write[text_to_write_index] == " ") {
-                var text_to_write_char = text_to_write[text_to_write_index]
-                if(text_to_write_char == " ") {
-
-                }
-                else if(text_to_write_char.toUpperCase() == text_to_write_char){
-                    text_cost -= 2;
-                }
-                else {
-                    text_cost--;
-                }
-                number_of_characters_to_write++;
-                text_to_write_index++;
-            }
+            text_that_can_be_written = findWhatCanBeWritten(text_to_write, this.point_durability);
         }
 
-
-        
         this.point_durability = new_point_durability;
-        const text_that_can_be_written = text_to_write.substring(0, number_of_characters_to_write);
-        
         paper_to_write_on.addText(text_that_can_be_written, this.passphrase);
     }
 
@@ -67,6 +47,26 @@ function calculatePointDurabilityReduction(text_to_write) {
     const no_space_text_length = text_to_write.replace(/\s/g, "").length;
 
     return no_space_text_length + number_of_caps;
+}
+
+function findWhatCanBeWritten(text_to_write, text_cost) {
+    
+    var text_that_can_be_written_length = 0;
+    const text_length = text_to_write.length;
+    var text_index = 0;
+    while((text_cost > 0 && text_length > text_index) || text_to_write[text_index] == " "){
+        var text_char = text_to_write[text_index];
+        if (text_char == " "){
+            
+        }
+        else if (text_char.toUpperCase() == text_char) {
+            text_cost -= 2;
+        }
+        else { text_cost--;}
+        text_that_can_be_written_length++;
+	    text_index++;
+    }
+    return text_to_write.substr(0, text_that_can_be_written_length);
 }
 
 export {
