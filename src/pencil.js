@@ -1,7 +1,7 @@
 import { Passphrase } from './passphrase'
 
 class Pencil {
-    constructor(input_point_durability, input_pencil_length, input_eraser_durability) {
+    constructor(input_point_durability = 10, input_pencil_length = 1, input_eraser_durability = 10) {
         this.point_durability = this.original_point_durability = input_point_durability;
         this.pencil_length = input_pencil_length;
         this.eraser_durability = input_eraser_durability;
