@@ -1,6 +1,4 @@
-// const newPage = function(){
-//     return new Paper();
-// }
+import { Passphrase } from './passphrase';
 
 class Paper {
     constructor() {
@@ -11,11 +9,14 @@ class Paper {
         return this.text;
     }
 
-    addText(text_to_add) {
+    addText(text_to_add, passphrase) {
+        if(passphrase == undefined) {
+            return;
+        }
         this.text = text_to_add;
     }
 }
 
-module.exports = {
+export {
     Paper
 }
