@@ -23,14 +23,18 @@ class Pencil {
     write(text_to_write, paper_to_write_on) {
         const amount_to_reduce_length = calculatePointDurabilityReduction(text_to_write);
         var new_point_durability = (this.point_durability - amount_to_reduce_length);
-
+        var number_of_characters_to_write = text_to_write.length;
         if(new_point_durability < 0) {
             new_point_durability = 0;
+            number_of_characters_to_write = this.point_durability;
         }
+
+
         
         this.point_durability = new_point_durability;
-
-        paper_to_write_on.addText(text_to_write, this.passphrase);
+        const text_that_can_be_written = text_to_write.substring(0, number_of_characters_to_write);
+        
+        paper_to_write_on.addText(text_that_can_be_written, this.passphrase);
     }
 
     sharpen() {

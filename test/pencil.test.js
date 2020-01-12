@@ -91,11 +91,15 @@ describe('tests for Pencil module', function () {
     describe('write function tests', function() {
         beforeEach(function(){
             sheet_one = new Paper();
-            pencil_one = new Pencil();
+            pencil_one = new Pencil(6, 1, 6);
         });
-        it('pencil writes "Hello" on sheet_one', function(){
+        it('pencil writes "hello" on sheet_one', function(){
             pencil_one.write('Hello', sheet_one);
             assert.equal(sheet_one.getText(), 'Hello');
+        });
+        it('pencil stops writing when PD becomes 0', function(){
+            pencil_one.write('Hello World!', sheet_one);
+            assert.equal(sheet_one.getText(), 'Hello ')
         });
     });
 });
