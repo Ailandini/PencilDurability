@@ -81,12 +81,21 @@ describe('tests for Pencil module', function () {
     });
     describe('eraser tests', function () {
         beforeEach(function () {
-            pencil_one = new Pencil(5, 2, 10);
+            pencil_one = new Pencil(20, 2, 10);
         });
         it('calling getEraserDurability returns eraser durability', function() {
             assert.equal(pencil_one.getEraserDurability(), 10);
         });
-
+        describe('erase function tests', function() {
+            this.beforeEach(function () {
+                sheet_one = new Paper();
+                pencil_one.write('Hello World', sheet_one);
+            })
+            it('Using eraser on five characters reduces eraser durability by 5', function() {
+                pencil_one.erase('World');
+                assert.equal(pencil_one.getEraserDurability(), 5);
+            });
+        });
     });
     describe('write function tests', function() {
         beforeEach(function(){

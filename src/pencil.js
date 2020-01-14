@@ -40,6 +40,10 @@ class Pencil {
         this.point_durability = this.original_point_durability;
         this.pencil_length--;
     }
+
+    erase() {
+        this.eraser_durability = 5;
+    }
 }
 
 function calculatePointDurabilityReduction(text_to_write) {
