@@ -103,6 +103,10 @@ describe('tests for Pencil module', function () {
                 pencil_one.erase('W');
                 assert.equal(pencil_one.getEraserDurability(), 9);
             });
+            it('erasing text containing spaces only decrements eraser durability for non-space length', function() {
+                pencil_one.erase('d W');
+                assert.equal(pencil_one.getEraserDurability(), 8);
+            });
         });
     });
     describe('write function tests', function() {

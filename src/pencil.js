@@ -45,7 +45,8 @@ class Pencil {
         if(text_to_erase == ' ') {
             return;
         }
-        this.eraser_durability -= text_to_erase.length;
+        const no_space_text_length = text_to_erase.replace(/\s/g, "").length;
+        this.eraser_durability -= no_space_text_length;
     }
 }
 
