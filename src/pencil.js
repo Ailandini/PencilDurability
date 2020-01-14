@@ -41,8 +41,11 @@ class Pencil {
         this.pencil_length--;
     }
 
-    erase() {
-        this.eraser_durability = 5;
+    erase(text_to_erase) {
+        if(text_to_erase == ' ') {
+            return;
+        }
+        this.eraser_durability -= text_to_erase.length;
     }
 }
 

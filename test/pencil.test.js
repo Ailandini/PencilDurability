@@ -95,6 +95,14 @@ describe('tests for Pencil module', function () {
                 pencil_one.erase('World');
                 assert.equal(pencil_one.getEraserDurability(), 5);
             });
+            it('erasing a space does not decrement the eraser durability', function(){
+                pencil_one.erase(' ');
+                assert.equal(pencil_one.getEraserDurability(), 10);
+            });
+            it('Using eraser on any word whose length is less than eraser durability changes the durability to current - length', function() {
+                pencil_one.erase('W');
+                assert.equal(pencil_one.getEraserDurability(), 9);
+            });
         });
     });
     describe('write function tests', function() {
