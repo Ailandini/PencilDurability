@@ -41,7 +41,6 @@ describe('tests for Paper module', function () {
         });
         describe('tests for eraseText', function() {
             beforeEach(function() {
-                sheet_one = new Paper();
                 sheet_one.addText('Hello World! Hello', passphrase);
             });
             it('passing a single character that is on the paper, removes the right most occurrence of that text', function() {
