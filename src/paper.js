@@ -15,6 +15,13 @@ class Paper {
         }
         this.text += text_to_add;
     }
+
+    eraseText(text_to_erase, passphrase) {
+        if(!(passphrase instanceof Passphrase)) {
+            return;
+        }
+        this.text = this.text.substring(0, this.text.length -1);
+    }
 }
 
 export {

@@ -39,5 +39,15 @@ describe('tests for Paper module', function () {
                 assert.equal(sheet_one.getText(), 'Hello World!');
             });
         });
+        describe('tests for eraseText', function() {
+            beforeEach(function() {
+                sheet_one = new Paper();
+                sheet_one.addText('Hello World! Hello', passphrase);
+            });
+            it('passing a single character that is on the paper, removes the right most occurrence of that text', function() {
+                sheet_one.eraseText('o', passphrase);
+                assert.equal(sheet_one.getText(), 'Hello World! Hell');
+            });
+        });
     });
 });
