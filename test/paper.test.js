@@ -45,11 +45,20 @@ describe('tests for Paper module', function () {
             });
             it('passing a single character that is on the paper, removes the right most occurrence of that text', function() {
                 sheet_one.eraseText('o', passphrase);
-                assert.equal(sheet_one.getText(), 'Hello World! Hell');
+                assert.equal(sheet_one.getText(), 'Hello World! Hell ');
             });
             it('passing a text value not contained on the paper erases nothing', function() {
                 sheet_one.eraseText('cats', passphrase);
                 assert.equal(sheet_one.getText(), 'Hello World! Hello');
+            });
+            it('passing text to eraseText that is on paper removes the right most occurrence of that full text', function(){
+                sheet_one.eraseText('Hello', passphrase);
+                assert.equal(sheet_one.getText(), 'Hello World!      ');
+            });
+            it('passing the same text more than once erases that text one instance at a time right-to-left', function() {
+                sheet_one.eraseText('o', passphrase);
+                sheet_one.eraseText('o', passphrase);
+                assert.equal(sheet_one.getText(), 'Hello W rld! Hell ');
             });
         });
     });

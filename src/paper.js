@@ -20,7 +20,10 @@ class Paper {
         if(!(passphrase instanceof Passphrase) || this.text.indexOf(text_to_erase) < 0) {
             return;
         }
-        this.text = this.text.substring(0, this.text.length -1);
+        const erase_index = this.text.lastIndexOf(text_to_erase);
+        const erase_text_length = text_to_erase.length;
+        const remaining_text = this.text.substring(0, erase_index) + ' '.repeat(erase_text_length) + this.text.substring(erase_index+erase_text_length);
+        this.text = remaining_text;
     }
 }
 
