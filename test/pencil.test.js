@@ -92,20 +92,24 @@ describe('tests for Pencil module', function () {
                 pencil_one.write('Hello World', sheet_one);
             })
             it('Using eraser on five characters reduces eraser durability by 5', function() {
-                pencil_one.erase('World');
+                pencil_one.erase('World', sheet_one);
                 assert.equal(pencil_one.getEraserDurability(), 5);
             });
             it('erasing a space does not decrement the eraser durability', function(){
-                pencil_one.erase(' ');
+                pencil_one.erase(' ', sheet_one);
                 assert.equal(pencil_one.getEraserDurability(), 10);
             });
             it('Using eraser on any word whose length is less than eraser durability changes the durability to current - length', function() {
-                pencil_one.erase('W');
+                pencil_one.erase('W', sheet_one);
                 assert.equal(pencil_one.getEraserDurability(), 9);
             });
             it('erasing text containing spaces only decrements eraser durability for non-space length', function() {
-                pencil_one.erase('d W');
+                pencil_one.erase('o W', sheet_one);
                 assert.equal(pencil_one.getEraserDurability(), 8);
+            });
+            it('erasing text that is not on the given paper does not decrement eraser durability', function() {
+                pencil_one.erase('cats', sheet_one);
+                assert.equal(pencil_one.getEraserDurability(), 10);
             });
         });
     });

@@ -41,8 +41,8 @@ class Pencil {
         this.pencil_length--;
     }
 
-    erase(text_to_erase) {
-        if(text_to_erase == ' ') {
+    erase(text_to_erase, paper_to_erase_from) {
+        if(text_to_erase == ' ' || paper_to_erase_from.getText().indexOf(text_to_erase) < 0) {
             return;
         }
         const no_space_text_length = text_to_erase.replace(/\s/g, "").length;
