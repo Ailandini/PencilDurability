@@ -47,6 +47,10 @@ describe('tests for Paper module', function () {
                 sheet_one.eraseText('o', passphrase);
                 assert.equal(sheet_one.getText(), 'Hello World! Hell');
             });
+            it('passing a text value not contained on the paper erases nothing', function() {
+                sheet_one.eraseText('cats', passphrase);
+                assert.equal(sheet_one.getText(), 'Hello World! Hello');
+            });
         });
     });
 });
