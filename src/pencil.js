@@ -46,7 +46,16 @@ class Pencil {
             return;
         }
         const no_space_text_length = text_to_erase.replace(/\s/g, "").length;
-        this.eraser_durability -= no_space_text_length;
+        var new_eraser_durability = (this.eraser_durability - no_space_text_length);
+        var text_that_can_be_erased = text_to_erase;
+        if(new_eraser_durability < 0) {
+            new_eraser_durability = 0;
+            var char_diff = text_to_erase.length - this.eraser_durability;
+            text_that_can_be_erased = text_to_erase.substring(char_diff);
+        }
+        
+        this.eraser_durability = new_eraser_durability;
+        paper_to_erase_from.eraseText(text_that_can_be_erased, this.passphrase);
     }
 }
 

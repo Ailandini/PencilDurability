@@ -79,14 +79,14 @@ describe('tests for Pencil module', function () {
             });
         });
     });
-    describe('eraser tests', function () {
+    describe('eraser durability tests', function () {
         beforeEach(function () {
             pencil_one = new Pencil(20, 2, 10);
         });
         it('calling getEraserDurability returns eraser durability', function() {
             assert.equal(pencil_one.getEraserDurability(), 10);
         });
-        describe('erase function tests', function() {
+        describe('eraser durability after erase tests', function() {
             this.beforeEach(function () {
                 sheet_one = new Paper();
                 pencil_one.write('Hello World', sheet_one);
@@ -111,6 +111,11 @@ describe('tests for Pencil module', function () {
                 pencil_one.erase('cats', sheet_one);
                 assert.equal(pencil_one.getEraserDurability(), 10);
             });
+            it('dropping below 0 ED returns ED to 0', function() {
+                pencil_one.write('!!!', sheet_one);
+                pencil_one.erase('Hello World!!!', sheet_one);
+                assert.equal(pencil_one.getEraserDurability(), 0);
+            })
         });
     });
     describe('write function tests', function() {
@@ -133,6 +138,21 @@ describe('tests for Pencil module', function () {
         it('pencil writing stops correctly when PD becomes 0 and text has leading spaces', function() {
             pencil_one.write('   H     World!', sheet_one);
             assert.equal(sheet_one.getText(), '   H     Wor');
+        });
+    });
+    describe('erase function tests', function() {
+        beforeEach(function(){
+            sheet_one = new Paper();
+            pencil_one = new Pencil(6, 1, 4);
+            pencil_one.write('Hello', sheet_one);
+        });
+        it('pencil erases second character when two are present from sheet_one', function() {
+            pencil_one.erase('l', sheet_one);
+            assert.equal(sheet_one.getText(), 'Hel o'); 
+        });
+        it('pencil erases everything up until ED is 0', function() {
+            pencil_one.erase('Hello', sheet_one);
+            assert.equal(sheet_one.getText(), 'H    ');
         });
     });
 });
