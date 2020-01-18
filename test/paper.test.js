@@ -61,5 +61,12 @@ describe('tests for Paper module', function () {
                 assert.equal(sheet_one.getText(), 'Hello W rld! Hell ');
             });
         });
+        describe('tests for clear() method', function () {
+            it('clear() returns written text back to ""', function() {
+                sheet_one.addText('Hello World', passphrase);
+                sheet_one.clear();
+                assert.equal(sheet_one.getText(), '');
+            });
+        });
     });
 });

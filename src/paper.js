@@ -16,6 +16,10 @@ class Paper {
         this.text += text_to_add;
     }
 
+    clear() {
+        this.text = '';
+    }
+
     eraseText(text_to_erase, passphrase) {
         if(!(passphrase instanceof Passphrase) || this.text.indexOf(text_to_erase) < 0) {
             return;
