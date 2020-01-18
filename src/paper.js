@@ -41,8 +41,8 @@ class Paper {
         if(vacancies.length == 0) {
             return;
         }
-        const first_vacancy = this.text_vacancies[0];
-        const text_after_edit = this.text.substring(0, first_vacancy[0]) + edit_text + this.text.substring(first_vacancy[0] + edit_text.length);
+        const edit_location = this.text_vacancies[0][0];
+        const text_after_edit = this.text.substring(0, edit_location) + edit_text + this.text.substring(edit_location + edit_text.length);
 
         this.text = text_after_edit;
 
