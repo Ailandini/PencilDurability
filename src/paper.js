@@ -33,7 +33,9 @@ class Paper {
         const erase_text_length = text_to_erase.length;
         const remaining_text = this.text.substring(0, erase_index) + ' '.repeat(erase_text_length) + this.text.substring(erase_index+erase_text_length);
         this.text = remaining_text;
+        
         this.text_vacancies.push([erase_index, erase_text_length]);
+        this.text_vacancies.sort();
     }
 
     editText(edit_text, passphrase) {
