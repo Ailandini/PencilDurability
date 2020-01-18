@@ -29,6 +29,10 @@ class Paper {
         const remaining_text = this.text.substring(0, erase_index) + ' '.repeat(erase_text_length) + this.text.substring(erase_index+erase_text_length);
         this.text = remaining_text;
     }
+
+    editText(edit_text, passphrase) {
+        return;
+    }
 }
 
 export {
