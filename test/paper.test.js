@@ -84,6 +84,11 @@ describe('tests for Paper module', function () {
                 sheet_one.editText('u', passphrase);
                 assert.equal(sheet_one.getText(), 'Hello Would');
             });
+            it('given a string of characters longer than the vacancy, edit overwrites the overlap', function () {
+                sheet_one.eraseText('ell', passphrase);
+                sheet_one.editText('ippy', passphrase);
+                assert.equal(sheet_one.getText(), 'Hippy World');
+            });
         });
     });
 });
