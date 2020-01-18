@@ -79,6 +79,11 @@ describe('tests for Paper module', function () {
                 sheet_one.editText('Y', passphrase);
                 assert.equal(sheet_one.getText(), 'Yello World');
             });
+            it('given a single character vacancy in the center of the paper text, edit replaces that character', function() {
+                sheet_one.eraseText('r', passphrase);
+                sheet_one.editText('u', passphrase);
+                assert.equal(sheet_one.getText(), 'Hello Would');
+            });
         });
     });
 });
