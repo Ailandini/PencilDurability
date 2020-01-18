@@ -4,19 +4,23 @@ import { Passphrase } from '../src/passphrase';
 
 describe('tests for Paper module', function () {
     var sheet_one = new Paper();
+    var passphrase = new Passphrase();
     describe('Paper methods that don\'t require a Pencil Passphrase', function () {
-        it('//Depricated removed newPage() method// PAPER.newPage() creates an empty instance of a piece of paper', function () {
-            expect(sheet_one).to.not.be.a('null');
-        });
         it('//Depricated removed newPage() method// Assigning PAPER.newPage() assigns an object of type Paper', function () {
             assert(sheet_one instanceof Paper);
         });
         it("Calling Paper's method 'getText' returns a string", function () {
             expect(sheet_one.getText()).to.be.a('string');
         });
+        describe('tests for clear() method', function () {
+            it('clear() returns written text back to ""', function() {
+                sheet_one.addText('Hello World', passphrase);
+                sheet_one.clear();
+                assert.equal(sheet_one.getText(), '');
+            });
+        });
     });
     describe('Paper methods that require a Pencil Passphrase', function () {
-        var passphrase = new Passphrase();
         beforeEach(function(){
             sheet_one = new Paper();
         });
@@ -27,10 +31,6 @@ describe('tests for Paper module', function () {
             });
             it('addText without a non-passphrase object returns empty', function() {
                 sheet_one.addText('Hello', '');
-                assert.equal(sheet_one.getText(), '');
-            });
-            it('addText without a second parameter returns empty', function(){
-                sheet_one.addText('Hello');
                 assert.equal(sheet_one.getText(), '');
             });
             it('if there is already text on the paper, addText appends the new text to the current text', function() {
@@ -59,13 +59,6 @@ describe('tests for Paper module', function () {
                 sheet_one.eraseText('o', passphrase);
                 sheet_one.eraseText('o', passphrase);
                 assert.equal(sheet_one.getText(), 'Hello W rld! Hell ');
-            });
-        });
-        describe('tests for clear() method', function () {
-            it('clear() returns written text back to ""', function() {
-                sheet_one.addText('Hello World', passphrase);
-                sheet_one.clear();
-                assert.equal(sheet_one.getText(), '');
             });
         });
     });
