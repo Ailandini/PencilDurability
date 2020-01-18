@@ -70,6 +70,10 @@ describe('tests for Paper module', function () {
                 sheet_one.editText('edited', passphrase);
                 assert.equal(sheet_one.getText(), 'Hello World');
             });
+            it('locations that have been erased and their length can be retrieved from a paper instance', function() {
+                sheet_one.eraseText('H', passphrase);
+                assert.deepEqual(sheet_one.getVacancies()[0], [0, 1]);
+            });
         });
     });
 });

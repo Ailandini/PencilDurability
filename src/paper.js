@@ -3,10 +3,15 @@ import { Passphrase } from './passphrase';
 class Paper {
     constructor() {
         this.text = '';
+        this.text_vacancies = [];
     }
 
     getText() {
         return this.text;
+    }
+
+    getVacancies() {
+        return this.text_vacancies;
     }
 
     addText(text_to_add, passphrase) {
@@ -28,6 +33,7 @@ class Paper {
         const erase_text_length = text_to_erase.length;
         const remaining_text = this.text.substring(0, erase_index) + ' '.repeat(erase_text_length) + this.text.substring(erase_index+erase_text_length);
         this.text = remaining_text;
+        this.text_vacancies.push([erase_index, erase_text_length]);
     }
 
     editText(edit_text, passphrase) {
