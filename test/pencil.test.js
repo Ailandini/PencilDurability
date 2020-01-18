@@ -5,10 +5,12 @@ import { Paper } from '../src/paper';
 describe('tests for Pencil module', function () {
     var pencil_one;
     var sheet_one;
+    beforeEach(function() {
+        sheet_one = new Paper();
+    })
     describe('point durability tests', function () {
         beforeEach(function () {
             pencil_one = new Pencil(12);
-            sheet_one = new Paper();
         });
 
         it('pencil takes a parameter for point durability and can return it', function () {
@@ -61,7 +63,6 @@ describe('tests for Pencil module', function () {
 
         describe('pencil length after sharpening', function () {
             beforeEach(function () {
-                sheet_one = new Paper();
                 pencil_one.write("Hello World", sheet_one);
                 pencil_one.sharpen();
             });
@@ -82,15 +83,12 @@ describe('tests for Pencil module', function () {
     describe('eraser durability tests', function () {
         beforeEach(function () {
             pencil_one = new Pencil(20, 2, 10);
+            pencil_one.write('Hello World', sheet_one);
         });
         it('calling getEraserDurability returns eraser durability', function() {
             assert.equal(pencil_one.getEraserDurability(), 10);
         });
         describe('eraser durability after erase tests', function() {
-            this.beforeEach(function () {
-                sheet_one = new Paper();
-                pencil_one.write('Hello World', sheet_one);
-            })
             it('Using eraser on five characters reduces eraser durability by 5', function() {
                 pencil_one.erase('World', sheet_one);
                 assert.equal(pencil_one.getEraserDurability(), 5);
@@ -120,7 +118,6 @@ describe('tests for Pencil module', function () {
     });
     describe('write function tests', function() {
         beforeEach(function(){
-            sheet_one = new Paper();
             pencil_one = new Pencil(6, 1, 6);
         });
         it('pencil writes "hello" on sheet_one', function(){
@@ -142,7 +139,6 @@ describe('tests for Pencil module', function () {
     });
     describe('erase function tests', function() {
         beforeEach(function(){
-            sheet_one = new Paper();
             pencil_one = new Pencil(6, 1, 4);
             pencil_one.write('Hello', sheet_one);
         });
