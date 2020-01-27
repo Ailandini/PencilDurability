@@ -47,7 +47,7 @@ class Paper {
         const text_after_edit = this.text.substring(0, edit_location) + edit_text + this.text.substring(edit_location + edit_text.length);
 
         this.text = text_after_edit;
-
+        this.text_vacancies = this.text_vacancies.splice(1);
     }
 }
 

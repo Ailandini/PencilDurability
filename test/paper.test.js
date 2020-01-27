@@ -84,16 +84,22 @@ describe('tests for Paper module', function () {
                 sheet_one.editText('u', passphrase);
                 assert.equal(sheet_one.getText(), 'Hello Would');
             });
-            it('given a string of characters longer than the vacancy, edit overwrites the overlap', function () {
-                sheet_one.eraseText('ell', passphrase);
-                sheet_one.editText('ippy', passphrase);
-                assert.equal(sheet_one.getText(), 'Hippy World');
-            });
+            // it('given a string of characters longer than the vacancy, edit overwrites the overlap with "@"', function () {
+            //     sheet_one.eraseText('ell', passphrase);
+            //     sheet_one.editText('ippy', passphrase);
+            //     assert.equal(sheet_one.getText(), 'Hipp@ World');
+            // });
             it('given multiple erases, edit writes in the left-most vacancy', function() {
                 sheet_one.eraseText('o', passphrase);
                 sheet_one.eraseText('H', passphrase);
                 sheet_one.editText('Y', passphrase);
                 assert.equal(sheet_one.getText(), 'Yello W rld');
+            });
+            it('editing text when we no longer have vacancies changes nothing', function() {
+                sheet_one.eraseText('Hello', passphrase);
+                sheet_one.editText('Yello', passphrase);
+                sheet_one.editText('Nothing', passphrase);
+                assert.equal(sheet_one.getText(), 'Yello World');
             });
         });
     });
