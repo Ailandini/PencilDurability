@@ -57,6 +57,9 @@ class Pencil {
         this.eraser_durability = new_eraser_durability;
         paper_to_erase_from.eraseText(text_that_can_be_erased, this.passphrase);
     }
+        edit(edit_text, paper_to_edit) {
+            return;
+        }
 }
 
 function calculatePointDurabilityReduction(text_to_write) {

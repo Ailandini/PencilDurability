@@ -151,5 +151,13 @@ describe('tests for Pencil module', function () {
             assert.equal(sheet_one.getText(), 'H    ');
         });
     });
+    describe('edit function tests', function() {
+        it('pencil edit does nothing if no text has been erased', function () {
+            pencil_one = new Pencil(15,1,5);
+            pencil_one.write('Hello World', sheet_one);
+            pencil_one.edit('edit', sheet_one);
+            assert.equal(sheet_one.getText(), 'Hello World');
+        });
+    });
 });
 
