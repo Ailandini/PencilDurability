@@ -43,16 +43,31 @@ class Paper {
         if(!(passphrase instanceof Passphrase) || vacancies.length == 0) {
             return;
         }
-        const edit_location = this.text_vacancies[0][0];
-        const vacancy_length = this.text_vacancies[0][1];
-        const text_overflow = edit_text.length - vacancy_length;
-        edit_text = edit_text.substring(0,vacancy_length) + '@'.repeat(text_overflow);
-        const text_after_edit = this.text.substring(0, edit_location) + edit_text + this.text.substring(edit_location + edit_text.length);
-
+        const edit_location = vacancies[0][0];
+        const vacancy_length = vacancies[0][1];
+        const text_overflow_index = edit_location + vacancy_length;
+        var overlap_text = edit_text.substring(vacancy_length);
+        
+        var adjusted_overlap_text = '';
+        var count = 0;
+        for(var i=text_overflow_index; i < text_overflow_index + overlap_text.length; i++) {
+            if(this.text[i] != ' ') {
+                adjusted_overlap_text += '@';
+            } 
+            else {
+                adjusted_overlap_text += overlap_text[count];
+            }
+            count++;
+        }
+        
+        var adjusted_edit_text = edit_text.substring(0,vacancy_length) + adjusted_overlap_text;
+        const text_after_edit = this.text.substring(0, edit_location) + adjusted_edit_text + this.text.substring(edit_location + edit_text.length);
+        
         this.text = text_after_edit;
-        this.text_vacancies = this.text_vacancies.splice(1);
+        this.text_vacancies = vacancies.splice(1);
     }
 }
+
 
 export {
     Paper

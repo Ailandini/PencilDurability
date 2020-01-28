@@ -101,6 +101,11 @@ describe('tests for Paper module', function () {
                 sheet_one.editText('ippy', passphrase);
                 assert.equal(sheet_one.getText(), 'Hipp@ World');
             });
+            it('given an edit string longer than the vacancy that spans over natural spaces in text, edit characters fill paper spaces', function() {
+                sheet_one.eraseText('ell', passphrase);
+                sheet_one.editText('ipper', passphrase);
+                assert.equal(sheet_one.getText(), 'Hipp@rWorld');
+            })
         });
     });
 });
