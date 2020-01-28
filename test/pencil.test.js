@@ -158,6 +158,13 @@ describe('tests for Pencil module', function () {
             pencil_one.edit('edit', sheet_one);
             assert.equal(sheet_one.getText(), 'Hello World');
         });
+        it('pencil edit adds text to left-most erased location', function () {
+            pencil_one = new Pencil(15,1,5);
+            pencil_one.write('Hello World', sheet_one);
+            pencil_one.erase('Hello', sheet_one);
+            pencil_one.edit('edit', sheet_one);
+            assert.equal(sheet_one.getText(), 'edit  World');
+        });
     });
 });
 

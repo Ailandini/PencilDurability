@@ -58,7 +58,7 @@ class Pencil {
         paper_to_erase_from.eraseText(text_that_can_be_erased, this.passphrase);
     }
         edit(edit_text, paper_to_edit) {
-            return;
+            paper_to_edit.editText(edit_text, this.passphrase);
         }
 }
 
