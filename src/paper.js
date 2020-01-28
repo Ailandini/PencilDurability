@@ -39,35 +39,42 @@ class Paper {
     }
 
     editText(edit_text, passphrase) {
-        var vacancies = this.text_vacancies;
+        const vacancies = this.text_vacancies;
+        const text_to_be_edited = this.text;
         if(!(passphrase instanceof Passphrase) || vacancies.length == 0) {
             return;
         }
-        const edit_location = vacancies[0][0];
+        const vacancy_location = vacancies[0][0];
         const vacancy_length = vacancies[0][1];
-        const text_overflow_index = edit_location + vacancy_length;
-        var overlap_text = edit_text.substring(vacancy_length);
+
+        const overlap_start = vacancy_location + vacancy_length;
+        const overlap_text = edit_text.substring(vacancy_length);
         
-        var adjusted_overlap_text = '';
-        var count = 0;
-        for(var i=text_overflow_index; i < text_overflow_index + overlap_text.length; i++) {
-            if(this.text[i] != ' ') {
-                adjusted_overlap_text += '@';
-            } 
-            else {
-                adjusted_overlap_text += overlap_text[count];
-            }
-            count++;
-        }
+        const adjusted_overlap_text = decideEditOverflowOutput(text_to_be_edited, overlap_text, overlap_start);
         
-        var adjusted_edit_text = edit_text.substring(0,vacancy_length) + adjusted_overlap_text;
-        const text_after_edit = this.text.substring(0, edit_location) + adjusted_edit_text + this.text.substring(edit_location + edit_text.length);
+        const adjusted_edit_text = edit_text.substring(0,vacancy_length) + adjusted_overlap_text;
+        const text_after_edit = text_to_be_edited.substring(0, vacancy_location) + adjusted_edit_text + text_to_be_edited.substring(vacancy_location + edit_text.length);
         
         this.text = text_after_edit;
         this.text_vacancies = vacancies.splice(1);
     }
 }
 
+function decideEditOverflowOutput(text_to_be_edited, overlap_text, overlap_start) {
+    const overlap_length = overlap_text.length;
+    var adjusted_overlap_text = '';
+    var count = 0;
+    for(var i=overlap_start; i < overlap_start + overlap_length; i++) {
+        if(text_to_be_edited[i] != ' ') {
+            adjusted_overlap_text += '@';
+        } 
+        else {
+            adjusted_overlap_text += overlap_text[count];
+        }
+        count++;
+    }
+    return adjusted_overlap_text;
+}
 
 export {
     Paper
