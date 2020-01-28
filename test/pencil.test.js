@@ -152,30 +152,26 @@ describe('tests for Pencil module', function () {
         });
     });
     describe('edit function tests', function() {
-        it('pencil edit does nothing if no text has been erased', function () {
-            pencil_one = new Pencil(15,1,5);
+        beforeEach(function () {
+            pencil_one = new Pencil(15,1,10);
             pencil_one.write('Hello World', sheet_one);
+        });
+        it('pencil edit does nothing if no text has been erased', function () {
             pencil_one.edit('edit', sheet_one);
             assert.equal(sheet_one.getText(), 'Hello World');
         });
         it('pencil edit adds text to left-most erased location', function () {
-            pencil_one = new Pencil(15,1,10);
-            pencil_one.write('Hello World', sheet_one);
             pencil_one.erase('Hello', sheet_one);
             pencil_one.erase('Wor', sheet_one);
             pencil_one.edit('ed', sheet_one);
             assert.equal(sheet_one.getText(), 'ed       ld');
         });
         it('pencil edit decrements point durability as expected', function () {
-            pencil_one = new Pencil(15,1,5);
-            pencil_one.write('Hello World', sheet_one);
             pencil_one.erase('Hello', sheet_one);
             pencil_one.edit('edit', sheet_one);
             assert.equal(pencil_one.getPointDurability(), 0);
         });
         it('pencil edit writes as expected when point durability is expended', function () {
-            pencil_one = new Pencil(15,1,5);
-            pencil_one.write('Hello World', sheet_one);
             pencil_one.erase('Hello', sheet_one);
             pencil_one.edit('edit', sheet_one);
             assert.equal(sheet_one.getText(), 'edi   World');
