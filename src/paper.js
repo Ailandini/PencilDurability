@@ -44,6 +44,9 @@ class Paper {
             return;
         }
         const edit_location = this.text_vacancies[0][0];
+        const vacancy_length = this.text_vacancies[0][1];
+        const text_overflow = edit_text.length - vacancy_length;
+        edit_text = edit_text.substring(0,vacancy_length) + '@'.repeat(text_overflow);
         const text_after_edit = this.text.substring(0, edit_location) + edit_text + this.text.substring(edit_location + edit_text.length);
 
         this.text = text_after_edit;
