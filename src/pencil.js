@@ -57,9 +57,17 @@ class Pencil {
         this.eraser_durability = new_eraser_durability;
         paper_to_erase_from.eraseText(text_that_can_be_erased, this.passphrase);
     }
-        edit(edit_text, paper_to_edit) {
-            paper_to_edit.editText(edit_text, this.passphrase);
+    
+    edit(edit_text, paper_to_edit) {
+        const amount_to_reduce_length = calculatePointDurabilityReduction(edit_text);
+        var new_point_durability = (this.point_durability - amount_to_reduce_length);
+        if(new_point_durability < 0) {
+            new_point_durability = 0;
         }
+
+        this.point_durability = new_point_durability;
+        paper_to_edit.editText(edit_text, this.passphrase);
+    }
 }
 
 function calculatePointDurabilityReduction(text_to_write) {

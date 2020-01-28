@@ -165,6 +165,14 @@ describe('tests for Pencil module', function () {
             pencil_one.edit('edit', sheet_one);
             assert.equal(sheet_one.getText(), 'edit  World');
         });
+
+        it('pencil edit decrements point durability as expected', function () {
+            pencil_one = new Pencil(15,1,5);
+            pencil_one.write('Hello World', sheet_one);
+            pencil_one.erase('Hello', sheet_one);
+            pencil_one.edit('edit', sheet_one);
+            assert.equal(pencil_one.getPointDurability(), 0);
+        });
     });
 });
 
