@@ -2,15 +2,15 @@ import { Paper } from './paper.js';
 import { Pencil } from './pencil.js';
 
 $('document').ready(function () {
-    const paperRef = {'Paper 1' : '.initial-paper', 'Paper 2' : '.secondary-paper'}
+    const paperRef = {'Paper 1' : '.initial-paper', 'Paper 2' : '.second-paper'}
     var pencilNumber = 1;
     var pencils = {};
     var paper = {'Paper 1': new Paper()};
 
     function createPencil() {
-        const pointDurability = Math.round(Math.random() * 100) % 20;
-        const eraserDurability = Math.round(Math.random() * 100) % 20;
-        const pencilLength = Math.round(Math.random() * 10) % 3;
+        const pointDurability = (Math.round(Math.random() * 100) % 20) + 1;
+        const eraserDurability = (Math.round(Math.random() * 100) % 20) + 1;
+        const pencilLength = (Math.round(Math.random() * 10) % 3) + 1;
         $('.table tbody').append('<tr value="'+pencilNumber+'"><td>' + pencilNumber + '</td>' +
             '<td class="PD">' + pointDurability + '</td>' +
             '<td class="ED">' + eraserDurability + '</td>' +
@@ -48,7 +48,33 @@ $('document').ready(function () {
         const textToWrite = $('input').val();
         pencilToUse.write(textToWrite, paperToUse);
 
-        $(paperToUpdate).text(paperToUse.getText());
+        $('PRE', paperToUpdate).text(paperToUse.getText());
+        updatePencilTable($('.dropdown-toggle.pencil').text().trim()[$('.dropdown-toggle.pencil').text().length-1], pencilToUse);
+    }
+
+    function erase() {
+        if($('.dropdown-toggle.pencil').text().trim() == '-Select a Pencil-') {
+            return;
+        }
+        const pencilToUse = pencils[$('.dropdown-toggle.pencil').text().trim()];
+        const paperToUse = paper[$('.dropdown-toggle.paper').text().trim()];
+        const paperToUpdate = paperRef[$('.dropdown-toggle.paper').text().trim()];
+        const textToErase = $('input').val();
+        pencilToUse.erase(textToErase, paperToUse);
+        $('PRE', paperToUpdate).text(paperToUse.getText());
+        updatePencilTable($('.dropdown-toggle.pencil').text().trim()[$('.dropdown-toggle.pencil').text().length-1], pencilToUse);
+    }
+
+    function edit() {
+        if($('.dropdown-toggle.pencil').text().trim() == '-Select a Pencil-') {
+            return;
+        }
+        const pencilToUse = pencils[$('.dropdown-toggle.pencil').text().trim()];
+        const paperToUse = paper[$('.dropdown-toggle.paper').text().trim()];
+        const paperToUpdate = paperRef[$('.dropdown-toggle.paper').text().trim()];
+        const textToReplace = $('input').val();
+        pencilToUse.edit(textToReplace, paperToUse);
+        $('PRE', paperToUpdate).text(paperToUse.getText());
         updatePencilTable($('.dropdown-toggle.pencil').text().trim()[$('.dropdown-toggle.pencil').text().length-1], pencilToUse);
     }
 
@@ -61,5 +87,11 @@ $('document').ready(function () {
     $('.write-btn').click(function () {
         write();
     });
+    $('.erase-btn').click(function () {
+        erase();
+    });
+    $('.edit-btn').click(function () {
+        edit();
+    })
 
 });
