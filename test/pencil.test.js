@@ -176,6 +176,10 @@ describe('tests for Pencil module', function () {
             pencil_one.edit('edit', sheet_one);
             assert.equal(sheet_one.getText(), 'edi   World');
         });
+        it('pencil edit does not decrement point durability if there is no where to edit', function () {
+            pencil_one.edit('edit', sheet_one);
+            assert.equal(pencil_one.getPointDurability(), 3);
+        });
     });
 });
 

@@ -59,6 +59,9 @@ class Pencil {
     }
 
     edit(edit_text, paper_to_edit) {
+        if(paper_to_edit.getVacancies().length == 0) {
+            return;
+        }
         const amount_to_reduce_length = calculatePointDurabilityReduction(edit_text);
         var new_point_durability = (this.point_durability - amount_to_reduce_length);
         var edit_text_that_can_be_written = edit_text;
