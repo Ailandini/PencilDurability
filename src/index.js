@@ -87,6 +87,13 @@ $('document').ready(function () {
         updatePencilTable($('.dropdown-toggle.pencil').text().trim()[$('.dropdown-toggle.pencil').text().length-1], pencilToUse);
     }
 
+    function clearPaper() {
+        const paperToUse = paper[$('.dropdown-toggle.paper').text().trim()];
+        const paperToUpdate = paperRef[$('.dropdown-toggle.paper').text().trim()];
+        paperToUse.clear();
+        $('PRE', paperToUpdate).text(paperToUse.getText());
+    }
+
     $('.create-pencil-btn').click(function () {
         createPencil();
     });
@@ -104,6 +111,9 @@ $('document').ready(function () {
     });
     $('.sharpen-btn').click(function () {
         sharpen();
+    });
+    $('.clear-btn').click(function () {
+        clearPaper();
     });
 
 });
