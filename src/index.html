@@ -9,12 +9,6 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <style>
-        .paper-active {
-            box-shadow: 0 0 3px blue;
-        }
-    </style>
 </head>
 
 <body width="100%" style="margin: 0; padding: 0; height: 500px;display:relative;">
@@ -23,8 +17,8 @@
             style="height: 400px; width: 100%;display:flex;justify-content: center;border:1px solid rgba(169, 169, 169, .8)">
             <div class='paper-plane'
                 style="display: flex; height: 400px; width: 75%;border-right:1px solid rgba(169, 169, 169, .8)">
-                <div class="initial-paper paper-active" style="width: 100%; height: 399px;"><PRE></PRE></div>
-                <div class="second-paper" style="height: 100%; border-left: rgba(169,169,169,.8);"><PRE></PRE></div>
+                <div class="initial-paper paper-active" style="width: 100%; height: 399px;box-shadow: 0 0 3px blue;"><PRE></PRE></div>
+                <div class="second-paper" style="height: 100%; flex-grow: 1;"><PRE></PRE></div>
             </div>
             <div class="pencil-shelf" style="height: 400px;flex-grow: 1;">
                 <table class="table table-bordered">
@@ -51,7 +45,8 @@
                                 Paper 1
                             </button>
                             <div class="dropdown-menu paper" aria-labelledby="paper-dropdown">
-                                <a class="dropdown-item" href="#" onclick="$('.dropdown-toggle.paper').text('Paper 1');">Paper 1</a>
+                                <a class="dropdown-item" href="#" onclick="$('.dropdown-toggle.paper').text('Paper 1');$('.second-paper').css('box-shadow', 'none'); $('.initial-paper').css('box-shadow', '0 0 3px blue');">Paper 1</a>
+                                <a class="dropdown-item paper-2" style="display: none;" href="#" onclick="$('.dropdown-toggle.paper').text('Paper 2');$('.initial-paper').css('box-shadow', 'none'); $('.second-paper').css('box-shadow', '0 0 3px blue');">Paper 2</a>
                             </div>
                         </div>
                         <div class="dropdown">
@@ -71,7 +66,7 @@
                     <button class="erase-btn">Erase</button>
                     <button class="edit-btn">Edit</button>
                 </div>
-                <button style="margin-left: 10px;">Sharpen</button>
+                <button style="margin-left: 10px;" class="sharpen-btn">Sharpen</button>
             </div>
             <div class="create-operations" style="flex-grow:1;">
                 <div style="display:flex;align-items:center;justify-content: space-around;">

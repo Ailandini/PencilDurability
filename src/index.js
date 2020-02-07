@@ -26,9 +26,9 @@ $('document').ready(function () {
             return;
         }
         $('.initial-paper').css('width', '50%');
-        $('.secondary-paper').css('width', '50%');
+        $('.second-paper').css('width', '50%');
         paper['Paper 2'] = new Paper();
-        $('.dropdown-menu.paper').append('<a class="dropdown-item" onclick="$(\'.dropdown-toggle.paper\').text(\'Paper 2\');" href="#">Paper 2</a>');
+        $('.paper-2').toggle();
     }
 
     function updatePencilTable(value, pencil) {
@@ -78,6 +78,15 @@ $('document').ready(function () {
         updatePencilTable($('.dropdown-toggle.pencil').text().trim()[$('.dropdown-toggle.pencil').text().length-1], pencilToUse);
     }
 
+    function sharpen() {
+        if($('.dropdown-toggle.pencil').text().trim() == '-Select a Pencil-') {
+            return;
+        }
+        const pencilToUse = pencils[$('.dropdown-toggle.pencil').text().trim()];
+        pencilToUse.sharpen();
+        updatePencilTable($('.dropdown-toggle.pencil').text().trim()[$('.dropdown-toggle.pencil').text().length-1], pencilToUse);
+    }
+
     $('.create-pencil-btn').click(function () {
         createPencil();
     });
@@ -92,6 +101,9 @@ $('document').ready(function () {
     });
     $('.edit-btn').click(function () {
         edit();
-    })
+    });
+    $('.sharpen-btn').click(function () {
+        sharpen();
+    });
 
 });
