@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <style> .paper-active {
-        box-shadow: 0 0 3px blue;
-    }
+    <style>
+        .paper-active {
+            box-shadow: 0 0 3px blue;
+        }
     </style>
 </head>
 
@@ -20,14 +21,15 @@
     <div class="desk" style="width: 100%; height: 500px; display: flex; flex-direction: column;padding:10px;">
         <div class="desk-top"
             style="height: 400px; width: 100%;display:flex;justify-content: center;border:1px solid rgba(169, 169, 169, .8)">
-            <div class='paper-plane' style="height: 400px; width: 75%;border-right:1px solid rgba(169, 169, 169, .8)">
+            <div class='paper-plane'
+                style="display: flex; height: 400px; width: 75%;border-right:1px solid rgba(169, 169, 169, .8)">
                 <div class="initial-paper paper-active" style="width: 100%; height: 399px;"></div>
                 <div class="second-paper" style="height: 100%;"></div>
             </div>
             <div class="pencil-shelf" style="height: 400px;flex-grow: 1;">
                 <table class="table table-bordered">
-                    <th colspan='4' style="text-align: center;"> Created Pencils</th>
                     <tbody>
+                        <th colspan='4' style="text-align: center;"> Created Pencils</th>
                         <tr>
                             <td>Pencil #</td>
                             <td>Point</td>
@@ -41,23 +43,31 @@
         <div class="write-shelf" style="height: 50px; width: 100%;margin-top:10px;display:flex;align-items:center;">
             <div class="write-operations" style="display: flex; align-items: center; width:75%">
                 <div class="input-group" style="flex-grow: 1;max-width:600px;margin-right: 5px;">
-                    
+
                     <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Paper 1</button>
-                        <div class="dropdown-menu">
-                            <!-- <a class="dropdown-item" href="#">Action</a> -->
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle paper" type="button" id="paper-dropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Paper 1
+                            </button>
+                            <div class="dropdown-menu paper" aria-labelledby="paper-dropdown">
+                                <a class="dropdown-item" href="#">Paper 1</a>
+                            </div>
                         </div>
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Choose A Pencil</button>
-                        <div class="dropdown-menu">
-                            <!-- <a class="dropdown-item" href="#">Action</a> -->
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle pencil" type="button" id="pencil-dropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                -Select a Pencil-
+                            </button>
+                            <div class="dropdown-menu pencil" aria-labelledby="pencil-dropdown">
+                                <!-- <a class="dropdown-item" href="#">Action</a> -->
+                            </div>
                         </div>
                     </div>
                     <input type="text" style="flex-grow: 1;">
                 </div>
                 <div class="btn-group">
-                    <button class="write-btn"c>Write</button c>
+                    <button class="write-btn" c>Write</button c>
                     <button class="erase-btn">Erase</button>
                     <button class="edit-btn">Edit</button>
                 </div>
