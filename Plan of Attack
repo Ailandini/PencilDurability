@@ -9,7 +9,7 @@ PAPER
         getText ✔
         addText ✔
         eraseText ✔
-        editText
+        editText ✔
         CLEAR ✔
             PAPER removes all existing text ✔
         getText ✔
@@ -18,13 +18,13 @@ PAPER
             PAPER appends provided text to currently written text. ✔
         eraseText (requires a pencil be provided as a parameter) ✔
             PAPER removes right most occurence of provided text if it exists. ✔
-        editText (requires a pencil be provided as a parameter)
-            PAPER replaces overlaps with @ and maintains characters that would fit into spaces
-            PAPER overwrites left most erased space with provided text.
+        editText (requires a pencil be provided as a parameter) ✔
+            PAPER replaces overlaps with @ and maintains characters that would fit into spaces ✔
+            PAPER overwrites left most erased space with provided text. ✔
             
 
 Second define pencil:
-PENCIL 
+PENCIL ✔
     Properties:
         Point Durability ✔
         Length ✔
@@ -34,18 +34,18 @@ PENCIL
             tells PAPER what to add. ✔
             PAPER adds text ✔
             PENCIL decrements Point Durability (except spaces and new lines, 2x for uppers); ✔
-        ERASE 
+        ERASE ✔
             tell PAPER what to erase ✔
             PAPER erases last instance (if it exists) ✔
             PENCIL Eraser Durability decrements ✔
-        SHARPEN 
+        SHARPEN ✔
             PENCIL reduces Length by 1 ✔
             PENCIL regains initial Point Durability ✔
-        EDIT 
-            PENCIL tells PAPER what to put into edit 
-            PAPER converts would be overlaps to @ (maintaining the original character for existing spaces)
-            PAPER overwrites edit in left most erased area (if it exists)
-            PENCIL decrements Point Durability (except spaces and new lines)
+        EDIT ✔
+            PENCIL tells PAPER what to put into edit ✔
+            PAPER converts would be overlaps to @ (maintaining the original character for existing spaces) ✔
+            PAPER overwrites edit in left most erased area (if it exists) ✔
+            PENCIL decrements Point Durability (except spaces and new lines) ✔
 PASSPHRASE ✔
     None user facing class required to call Paper methods.
     The reason for this is that javascript does not support private methods.
@@ -54,6 +54,6 @@ PASSPHRASE ✔
     The PASSPHRASE class is the way to do this, as it will not be available to the user. Pencil can create a passphrase 
     associated to that pencil, then pass it to paper to verify that the call is from a pencil not a user.
 
-Potential difficulties:
+Potential difficulties: ✔
     The edit text portion of this code, namely maintaining the overwriting text where spaces currently exist 
     will be the most challenging aspect of this code.
