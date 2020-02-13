@@ -1,4 +1,5 @@
 Pencil Durability Kata for Pillar/Accenture X.0
+Ansel Landini
 
 The Pencil Durability Kata was an intermediate exercise geared toward creating class structures to mimic the usage of a pencil, and how that usage impacted the written word on a piece of paper.
 
@@ -9,7 +10,8 @@ npm install
 npm run test
 
 npm install will load in all the project dependencies (including Mocha; the testing package utilized in this kata). 
-npm run test will run all of the test files located in the project's test/ directory.
+npm run test will run all of the test files located in the project's test/ directory and print their names to the console.
+There is no need to build the project, but it can be built by running "npm run build".
 
 Feel free to open the dist/index.html file and play around with it if you like. The frontend src/index.html and src/index.js are NOT meant to be graded in this Kata. These files were hastily thrown together to provide a visual testing aspect last minute. In a true implementation this would be removed once it was clear the functionality was correct. 
 
@@ -38,6 +40,9 @@ There are two behaviors in the Kata that are perhaps unideal, but were not speci
 
 1. Editing over characters that are the same, still returns @. For example, if the Paper reads "H llo" where "e" has been erased. Editing with the string "ello" will make the paper read "He@@@" despite the fact that the "llo" of the original paper and the edit text are the same.
 
-2. Editing with a text string that is longer than what has already been written changes all excess to "@". For example, if the paper reads "Hell " where "o" has been replaced, and the edit text is "o!!!" the resulting Paper text will be "Hello@@@". 
+2. Editing with a text string that is longer than what has already been written changes all excess to "@". For example, if the paper reads "Hell " where "o" has been erased, and the edit text is "o!!!" the resulting Paper text will be "Hello@@@". 
 
 In a true implementation, it is my opinion that these issues should be resolved, but for the purposes of the Kata, I have left them as is.
+
+Thank you for taking the time to review my Kata! 
+If you can provide detailed feedback, I would greatly appreciated it, as I am always looking to improve my TDD and general coding abilities. 
