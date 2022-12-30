@@ -28,7 +28,7 @@
     "esm": "^3.2.25",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "mocha": "^7.0.0",
+    "mocha": "^10.2.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-loader": "0.0.1"
